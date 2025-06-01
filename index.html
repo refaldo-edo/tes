@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Kelulusan - SD BOPKRI Wonosari II</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .admin-nav-item.active {
+            background-color: #2563eb;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="min-h-screen flex flex-col">
+        <!-- Main Content -->
+        <div id="mainContent" class="flex-grow">
+            <!-- Welcome Page -->
+            <div id="welcomePage" class="min-h-screen flex flex-col">
+                <header class="gradient-bg text-white py-4">
+                    <div class="container mx-auto px-4 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img id="schoolLogo" src="https://i.imgur.com/mLctxW2.jpeg" alt="Logo SD BOPKRI Wonosari II" class="h-16 mr-3">
+                            <div>
+                                <h1 class="text-xl md:text-2xl font-bold">SD BOPKRI Wonosari II</h1>
+                                <p class="text-sm md:text-base italic">"Sekolah Kristen Menyenangkan"</p>
+                            </div>
+                        </div>
+                        <div>
+                            <button onclick="showAdminLogin()" class="text-xs bg-white text-blue-600 px-2 py-1 rounded">Admin</button>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="container mx-auto px-4 py-8 flex-grow flex flex-col items-center justify-center">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 max-w-3xl w-full card">
+                        <div class="text-center mb-6">
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Pengumuman Kelulusan</h2>
+                            <h3 class="text-lg md:text-xl font-semibold text-gray-700">Tahun Ajaran 2023/2024</h3>
+                        </div>
+                        
+                        <div class="mb-8" id="welcomeMessage">
+                            <p class="text-gray-700 mb-4">Salam sejahtera,</p>
+                            <p class="text-gray-700 mb-4">Dengan penuh rasa syukur dan bangga, saya mengucapkan selamat kepada seluruh Siswa/i yang telah menyelesaikan jenjang pendidikan selama 6 tahun di SD BOPKRI Wonosari II.</p>
+                            <p class="text-gray-700 mb-4">Perjalanan pendidikan yang telah kalian tempuh merupakan langkah awal yang sangat berharga dalam membentuk masa depan yang cerah. Semoga ilmu dan nilai-nilai yang telah ditanamkan dapat menjadi bekal yang bermanfaat untuk jenjang pendidikan selanjutnya.</p>
+                            <p class="text-gray-700 mb-4">Untuk melihat hasil kelulusan, silakan klik tombol LOGIN di bawah ini dan masukkan tanggal lahir Anda.</p>
+                            <p class="text-gray-700 text-right italic">Kepala Sekolah,<br>SD BOPKRI Wonosari II</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button onclick="showLoginPage()" class="gradient-bg text-white font-bold py-3 px-8 rounded-full hover:opacity-90 transition-opacity">
+                                LOGIN
+                            </button>
+                        </div>
+                    </div>
+                </main>
+
+                <footer class="bg-gray-800 text-white py-4">
+                    <div class="container mx-auto px-4 text-center">
+                        <p>SD BOPKRI Wonosari II - Jl. Pramuka No. 32 Wonosari, Gunungkidul</p>
+                        <p class="text-sm mt-1">© 2024 Hak Cipta Dilindungi</p>
+                    </div>
+                </footer>
+            </div>
+
+            <!-- Login Page -->
+            <div id="loginPage" class="min-h-screen flex flex-col hidden">
+                <header class="gradient-bg text-white py-4">
+                    <div class="container mx-auto px-4 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img id="schoolLogoLogin" src="https://i.imgur.com/mLctxW2.jpeg" alt="Logo SD BOPKRI Wonosari II" class="h-16 mr-3">
+                            <div>
+                                <h1 class="text-xl md:text-2xl font-bold">SD BOPKRI Wonosari II</h1>
+                                <p class="text-sm md:text-base italic">"Sekolah Kristen Menyenangkan"</p>
+                            </div>
+                        </div>
+                        <div>
+                            <button onclick="showWelcomePage()" class="bg-white text-blue-600 px-4 py-2 rounded font-medium">Kembali</button>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="container mx-auto px-4 py-8 flex-grow flex flex-col items-center justify-center">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 max-w-md w-full card">
+                        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Verifikasi Data Siswa</h2>
+                        
+                        <div class="mb-6">
+                            <label for="birthDate" class="block text-gray-700 font-medium mb-2">Tanggal Lahir:</label>
+                            <div class="flex space-x-2">
+                                <select id="birthDay" class="flex-1 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Tanggal</option>
+                                </select>
+                                <select id="birthMonth" class="flex-1 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Bulan</option>
+                                </select>
+                                <select id="birthYear" class="flex-1 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Tahun</option>
+                                </select>
+                            </div>
+                            <p id="loginError" class="text-red-500 text-sm mt-1 hidden">Data tidak ditemukan. Silakan periksa kembali tanggal lahir Anda.</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button onclick="verifyStudent()" class="gradient-bg text-white font-bold py-3 px-8 rounded-full hover:opacity-90 transition-opacity w-full">
+                                Periksa Kelulusan
+                            </button>
+                        </div>
+                    </div>
+                </main>
+
+                <footer class="bg-gray-800 text-white py-4">
+                    <div class="container mx-auto px-4 text-center">
+                        <p>SD BOPKRI Wonosari II - Jl. Pramuka No. 32 Wonosari, Gunungkidul</p>
+                        <p class="text-sm mt-1">© 2024 Hak Cipta Dilindungi</p>
+                    </div>
+                </footer>
+            </div>
+
+            <!-- Result Page -->
+            <div id="resultPage" class="min-h-screen flex flex-col hidden">
+                <header class="gradient-bg text-white py-4">
+                    <div class="container mx-auto px-4 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img id="schoolLogoResult" src="https://i.imgur.com/mLctxW2.jpeg" alt="Logo SD BOPKRI Wonosari II" class="h-16 mr-3">
+                            <div>
+                                <h1 class="text-xl md:text-2xl font-bold">SD BOPKRI Wonosari II</h1>
+                                <p class="text-sm md:text-base italic">"Sekolah Kristen Menyenangkan"</p>
+                            </div>
+                        </div>
+                        <div>
+                            <button onclick="showLoginPage()" class="bg-white text-blue-600 px-4 py-2 rounded font-medium">Kembali</button>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="container mx-auto px-4 py-8 flex-grow">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 max-w-3xl mx-auto card">
+                        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Hasil Kelulusan</h2>
+                        
+                        <div class="flex flex-col md:flex-row gap-6 items-center md:items-start">
+                            <div class="w-32 h-40 bg-gray-200 rounded overflow-hidden flex-shrink-0">
+                                <img id="studentPhoto" src="" alt="Foto Siswa" class="w-full h-full object-cover">
+                            </div>
+                            
+                            <div class="flex-grow">
+                                <table class="w-full">
+                                    <tr>
+                                        <td class="py-2 font-medium">Nama</td>
+                                        <td class="py-2">: <span id="studentName">-</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 font-medium">NISN</td>
+                                        <td class="py-2">: <span id="studentNISN">-</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 font-medium">Tempat Lahir</td>
+                                        <td class="py-2">: <span id="studentBirthPlace">-</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 font-medium">Tanggal Lahir</td>
+                                        <td class="py-2">: <span id="studentBirthDate">-</span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <div id="passedStatus" class="hidden">
+                                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6">
+                                    <p class="font-bold">SELAMAT!</p>
+                                    <p>Anda dinyatakan <span class="font-bold">LULUS</span> dari SD BOPKRI Wonosari II</p>
+                                </div>
+                                
+                                <p class="mb-6 text-gray-700">Selamat atas kelulusan Anda! Semoga sukses untuk jenjang pendidikan selanjutnya.</p>
+                                
+                                <a id="downloadLink" href="#" target="_blank" class="inline-block gradient-bg text-white font-bold py-3 px-8 rounded-full hover:opacity-90 transition-opacity">
+                                    Download Dokumen Kelulusan
+                                </a>
+                            </div>
+                            
+                            <div id="failedStatus" class="hidden">
+                                <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6">
+                                    <p class="font-bold">MOHON MAAF</p>
+                                    <p>Anda dinyatakan <span class="font-bold">TIDAK LULUS</span> dari SD BOPKRI Wonosari II</p>
+                                </div>
+                                
+                                <p class="mb-6 text-gray-700">Silakan hubungi pihak sekolah untuk informasi lebih lanjut.</p>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <footer class="bg-gray-800 text-white py-4">
+                    <div class="container mx-auto px-4 text-center">
+                        <p>SD BOPKRI Wonosari II - Jl. Pramuka No. 32 Wonosari, Gunungkidul</p>
+                        <p class="text-sm mt-1">© 2024 Hak Cipta Dilindungi</p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <!-- Admin Login Modal -->
+        <div id="adminLoginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div class="bg-white rounded-lg p-6 max-w-md w-full">
+                <h2 class="text-xl font-bold mb-4">Login Admin</h2>
+                
+                <div class="mb-4">
+                    <label for="adminUsername" class="block text-gray-700 font-medium mb-2">Username:</label>
+                    <input type="text" id="adminUsername" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Masukkan username">
+                </div>
+                
+                <div class="mb-6">
+                    <label for="adminPassword" class="block text-gray-700 font-medium mb-2">Password:</label>
+                    <input type="password" id="adminPassword" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Masukkan password">
+                    <p id="adminLoginError" class="text-red-500 text-sm mt-1 hidden">Username atau password salah!</p>
+                </div>
+                
+                <div class="flex justify-end space-x-2">
+                    <button onclick="hideAdminLogin()" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-100">Batal</button>
+                    <button onclick="loginAdmin()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Login</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="adminPanel" class="min-h-screen flex hidden">
+            <!-- Sidebar -->
+            <div class="w-64 bg-gray-800 text-white flex-shrink-0">
+                <div class="p-4 border-b border-gray-700">
+                    <h2 class="text-xl font-bold">Panel Admin</h2>
+                    <p class="text-sm text-gray-400">SD BOPKRI Wonosari II</p>
+                </div>
+                
+                <nav class="p-4">
+                    <ul>
+                        <li class="mb-2">
+                            <button onclick="showAdminTab('students')" class="admin-nav-item w-full text-left py-2 px-3 rounded hover:bg-gray-700 active">Data Siswa</button>
+                        </li>
+                        <li class="mb-2">
+                            <button onclick="showAdminTab('welcome')" class="admin-nav-item w-full text-left py-2 px-3 rounded hover:bg-gray-700">Sambutan</button>
+                        </li>
+                        <li class="mb-2">
+                            <button onclick="showAdminTab('logo')" class="admin-nav-item w-full text-left py-2 px-3 rounded hover:bg-gray-700">Logo Sekolah</button>
+                        </li>
+                        <li class="mt-8">
+                            <button onclick="logoutAdmin()" class="w-full text-left py-2 px-3 rounded bg-red-600 hover:bg-red-700">Logout</button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <!-- Content -->
+            <div class="flex-grow bg-gray-100">
+                <!-- Students Tab -->
+                <div id="studentsTab" class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold">Data Siswa</h2>
+                        <button onclick="showAddStudentForm()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Tambah Siswa</button>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white">
+                                <thead>
+                                    <tr>
+                                        <th class="py-3 px-4 border-b border-gray-200 text-left">Nama</th>
+                                        <th class="py-3 px-4 border-b border-gray-200 text-left">NISN</th>
+                                        <th class="py-3 px-4 border-b border-gray-200 text-left">Tempat Lahir</th>
+                                        <th class="py-3 px-4 border-b border-gray-200 text-left">Tanggal Lahir</th>
+                                        <th class="py-3 px-4 border-b border-gray-200 text-left">Status</th>
+                                        <th class="py-3 px-4 border-b border-gray-200 text-left">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentsTableBody">
+                                    <!-- Student data will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Welcome Message Tab -->
+                <div id="welcomeTab" class="p-6 hidden">
+                    <h2 class="text-2xl font-bold mb-6">Edit Sambutan</h2>
+                    
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="mb-4">
+                            <label for="welcomeMessageInput" class="block text-gray-700 font-medium mb-2">Sambutan Kepala Sekolah:</label>
+                            <textarea id="welcomeMessageInput" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 h-64" placeholder="Masukkan sambutan kepala sekolah"></textarea>
+                        </div>
+                        
+                        <div class="text-right">
+                            <button onclick="saveWelcomeMessage()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Simpan Perubahan</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Logo Tab -->
+                <div id="logoTab" class="p-6 hidden">
+                    <h2 class="text-2xl font-bold mb-6">Edit Logo Sekolah</h2>
+                    
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2">Logo Saat Ini:</label>
+                            <div class="w-40 h-40 border border-gray-300 rounded overflow-hidden">
+                                <img id="currentLogo" src="https://i.imgur.com/mLctxW2.jpeg" alt="Logo Sekolah" class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="logoUrlInput" class="block text-gray-700 font-medium mb-2">URL Logo Baru:</label>
+                            <input type="text" id="logoUrlInput" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Masukkan URL logo (contoh: https://i.imgur.com/mLctxW2.jpeg)">
+                        </div>
+                        
+                        <div class="text-right">
+                            <button onclick="saveLogo()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Simpan Perubahan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add/Edit Student Modal -->
+        <div id="studentFormModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div class="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <h2 id="studentFormTitle" class="text-xl font-bold mb-4">Tambah Siswa</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="studentFormName" class="block text-gray-700 font-medium mb-2">Nama:</label>
+                        <input type="text" id="studentFormName" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nama lengkap siswa">
+                    </div>
+                    
+                    <div>
+                        <label for="studentFormNISN" class="block text-gray-700 font-medium mb-2">NISN:</label>
+                        <input type="text" id="studentFormNISN" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nomor NISN">
+                    </div>
+                    
+                    <div>
+                        <label for="studentFormBirthPlace" class="block text-gray-700 font-medium mb-2">Tempat Lahir:</label>
+                        <input type="text" id="studentFormBirthPlace" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tempat lahir">
+                    </div>
+                    
+                    <div>
+                        <label for="studentFormBirthDate" class="block text-gray-700 font-medium mb-2">Tanggal Lahir:</label>
+                        <input type="date" id="studentFormBirthDate" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="studentFormStatus" class="block text-gray-700 font-medium mb-2">Status Kelulusan:</label>
+                        <select id="studentFormStatus" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="LULUS">LULUS</option>
+                            <option value="TIDAK LULUS">TIDAK LULUS</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="studentFormSKL" class="block text-gray-700 font-medium mb-2">Link SKL:</label>
+                        <input type="text" id="studentFormSKL" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Link dokumen SKL">
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <label for="studentFormPhoto" class="block text-gray-700 font-medium mb-2">Link Foto:</label>
+                        <input type="text" id="studentFormPhoto" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Link foto siswa (contoh: https://i.imgur.com/T4168l3.jpeg)">
+                    </div>
+                </div>
+                
+                <div class="flex justify-end space-x-2">
+                    <button onclick="hideStudentForm()" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-100">Batal</button>
+                    <button onclick="saveStudent()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Simpan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div id="deleteConfirmModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div class="bg-white rounded-lg p-6 max-w-md w-full">
+                <h2 class="text-xl font-bold mb-4">Konfirmasi Hapus</h2>
+                <p class="mb-6">Apakah Anda yakin ingin menghapus data siswa ini? Tindakan ini tidak dapat dibatalkan.</p>
+                
+                <div class="flex justify-end space-x-2">
+                    <button onclick="hideDeleteConfirm()" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-100">Batal</button>
+                    <button onclick="confirmDelete()" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Hapus</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Default data
+        const defaultStudents = [
+            {
+                id: 1,
+                name: "Budi Santoso",
+                nisn: "1234567890",
+                birthPlace: "Wonosari",
+                birthDate: "2011-05-15",
+                status: "LULUS",
+                sklLink: "#",
+                photo: "https://i.imgur.com/T4168l3.jpeg"
+            },
+            {
+                id: 2,
+                name: "Siti Rahayu",
+                nisn: "0987654321",
+                birthPlace: "Gunungkidul",
+                birthDate: "2011-08-22",
+                status: "LULUS",
+                sklLink: "#",
+                photo: "https://i.imgur.com/T4168l3.jpeg"
+            }
+        ];
+
+        const defaultWelcomeMessage = document.getElementById('welcomeMessage').innerHTML;
+        const defaultLogoUrl = "https://i.imgur.com/mLctxW2.jpeg";
+
+        // Variables
+        let students = [];
+        let welcomeMessage = "";
+        let logoUrl = "";
+        let currentStudentId = null;
+        let studentToDeleteId = null;
+
+        // Load data from localStorage or use defaults
+        function loadData() {
+            // Load students
+            const savedStudents = localStorage.getItem('bopkri_students');
+            students = savedStudents ? JSON.parse(savedStudents) : defaultStudents;
+            
+            // Load welcome message
+            const savedWelcomeMessage = localStorage.getItem('bopkri_welcome_message');
+            welcomeMessage = savedWelcomeMessage || defaultWelcomeMessage;
+            document.getElementById('welcomeMessage').innerHTML = welcomeMessage;
+            
+            // Load logo URL
+            const savedLogoUrl = localStorage.getItem('bopkri_logo_url');
+            logoUrl = savedLogoUrl || defaultLogoUrl;
+            updateLogoDisplay();
+        }
+
+        // Save data to localStorage
+        function saveStudentsData() {
+            localStorage.setItem('bopkri_students', JSON.stringify(students));
+        }
+
+        function saveWelcomeMessageData() {
+            localStorage.setItem('bopkri_welcome_message', welcomeMessage);
+        }
+
+        function saveLogoUrlData() {
+            localStorage.setItem('bopkri_logo_url', logoUrl);
+        }
+
+        // Update logo display across all pages
+        function updateLogoDisplay() {
+            document.getElementById('schoolLogo').src = logoUrl;
+            document.getElementById('schoolLogoLogin').src = logoUrl;
+            document.getElementById('schoolLogoResult').src = logoUrl;
+            document.getElementById('currentLogo').src = logoUrl;
+        }
+
+        // Initialize date dropdowns
+        function initDateDropdowns() {
+            const daySelect = document.getElementById('birthDay');
+            const monthSelect = document.getElementById('birthMonth');
+            const yearSelect = document.getElementById('birthYear');
+            
+            // Days
+            daySelect.innerHTML = '<option value="">Tanggal</option>';
+            for (let i = 1; i <= 31; i++) {
+                const day = i.toString().padStart(2, '0');
+                daySelect.innerHTML += `<option value="${day}">${day}</option>`;
+            }
+            
+            // Months
+            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+            monthSelect.innerHTML = '<option value="">Bulan</option>';
+            for (let i = 0; i < months.length; i++) {
+                const month = (i + 1).toString().padStart(2, '0');
+                monthSelect.innerHTML += `<option value="${month}">${months[i]}</option>`;
+            }
+            
+            // Years
+            yearSelect.innerHTML = '<option value="">Tahun</option>';
+            for (let i = 2017; i >= 2010; i--) {
+                yearSelect.innerHTML += `<option value="${i}">${i}</option>`;
+            }
+        }
+
+        // Navigation functions
+        function showWelcomePage() {
+            document.getElementById('welcomePage').classList.remove('hidden');
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('resultPage').classList.add('hidden');
+        }
+
+        function showLoginPage() {
+            document.getElementById('welcomePage').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+            document.getElementById('resultPage').classList.add('hidden');
+            document.getElementById('loginError').classList.add('hidden');
+            
+            // Reset form
+            document.getElementById('birthDay').value = '';
+            document.getElementById('birthMonth').value = '';
+            document.getElementById('birthYear').value = '';
+        }
+
+        function showResultPage() {
+            document.getElementById('welcomePage').classList.add('hidden');
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('resultPage').classList.remove('hidden');
+        }
+
+        function showAdminLogin() {
+            document.getElementById('adminLoginModal').classList.remove('hidden');
+            document.getElementById('adminUsername').value = '';
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('adminLoginError').classList.add('hidden');
+        }
+
+        function hideAdminLogin() {
+            document.getElementById('adminLoginModal').classList.add('hidden');
+        }
+
+        function showAdminPanel() {
+            document.getElementById('mainContent').classList.add('hidden');
+            document.getElementById('adminPanel').classList.remove('hidden');
+            showAdminTab('students');
+            loadStudentsTable();
+        }
+
+        function showAdminTab(tab) {
+            // Hide all tabs
+            document.getElementById('studentsTab').classList.add('hidden');
+            document.getElementById('welcomeTab').classList.add('hidden');
+            document.getElementById('logoTab').classList.add('hidden');
+            
+            // Remove active class from all nav items
+            const navItems = document.querySelectorAll('.admin-nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            
+            // Show selected tab and set active class
+            document.getElementById(`${tab}Tab`).classList.remove('hidden');
+            document.querySelector(`button[onclick="showAdminTab('${tab}')"]`).classList.add('active');
+            
+            // Load specific tab content
+            if (tab === 'welcome') {
+                document.getElementById('welcomeMessageInput').value = welcomeMessage;
+            } else if (tab === 'logo') {
+                document.getElementById('currentLogo').src = logoUrl;
+                document.getElementById('logoUrlInput').value = logoUrl;
+            }
+        }
+
+        function logoutAdmin() {
+            document.getElementById('adminPanel').classList.add('hidden');
+            document.getElementById('mainContent').classList.remove('hidden');
+            showWelcomePage();
+        }
+
+        // Student verification
+        function verifyStudent() {
+            const day = document.getElementById('birthDay').value;
+            const month = document.getElementById('birthMonth').value;
+            const year = document.getElementById('birthYear').value;
+            
+            if (!day || !month || !year) {
+                document.getElementById('loginError').classList.remove('hidden');
+                return;
+            }
+            
+            const birthDate = `${year}-${month}-${day}`;
+            const student = students.find(s => {
+                const studentDate = s.birthDate.split('T')[0]; // Handle potential timezone issues
+                return studentDate === birthDate;
+            });
+            
+            if (student) {
+                // Display student data
+                document.getElementById('studentName').textContent = student.name;
+                document.getElementById('studentNISN').textContent = student.nisn;
+                document.getElementById('studentBirthPlace').textContent = student.birthPlace;
+                
+                // Format date for display
+                const birthDateObj = new Date(student.birthDate);
+                const formattedDate = birthDateObj.toLocaleDateString('id-ID', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+                document.getElementById('studentBirthDate').textContent = formattedDate;
+                
+                // Set photo
+                document.getElementById('studentPhoto').src = student.photo;
+                
+                // Show appropriate status
+                if (student.status === 'LULUS') {
+                    document.getElementById('passedStatus').classList.remove('hidden');
+                    document.getElementById('failedStatus').classList.add('hidden');
+                    document.getElementById('downloadLink').href = student.sklLink;
+                } else {
+                    document.getElementById('passedStatus').classList.add('hidden');
+                    document.getElementById('failedStatus').classList.remove('hidden');
+                }
+                
+                showResultPage();
+            } else {
+                document.getElementById('loginError').classList.remove('hidden');
+            }
+        }
+
+        // Admin functions
+        function loginAdmin() {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            // Simple authentication (in a real app, this would be server-side)
+            if (username === 'admin' && password === 'admin123') {
+                hideAdminLogin();
+                showAdminPanel();
+            } else {
+                document.getElementById('adminLoginError').classList.remove('hidden');
+            }
+        }
+
+        function loadStudentsTable() {
+            const tableBody = document.getElementById('studentsTableBody');
+            tableBody.innerHTML = '';
+            
+            students.forEach(student => {
+                const row = document.createElement('tr');
+                
+                // Format date for display
+                const birthDateObj = new Date(student.birthDate);
+                const formattedDate = birthDateObj.toLocaleDateString('id-ID', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+                
+                row.innerHTML = `
+                    <td class="py-3 px-4 border-b border-gray-200">${student.name}</td>
+                    <td class="py-3 px-4 border-b border-gray-200">${student.nisn}</td>
+                    <td class="py-3 px-4 border-b border-gray-200">${student.birthPlace}</td>
+                    <td class="py-3 px-4 border-b border-gray-200">${formattedDate}</td>
+                    <td class="py-3 px-4 border-b border-gray-200">
+                        <span class="${student.status === 'LULUS' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'} py-1 px-2 rounded-full text-xs font-medium">
+                            ${student.status}
+                        </span>
+                    </td>
+                    <td class="py-3 px-4 border-b border-gray-200">
+                        <button onclick="editStudent(${student.id})" class="text-blue-600 hover:text-blue-800 mr-2">Edit</button>
+                        <button onclick="deleteStudent(${student.id})" class="text-red-600 hover:text-red-800">Hapus</button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+        }
+
+        function showAddStudentForm() {
+            document.getElementById('studentFormTitle').textContent = 'Tambah Siswa';
+            document.getElementById('studentFormName').value = '';
+            document.getElementById('studentFormNISN').value = '';
+            document.getElementById('studentFormBirthPlace').value = '';
+            document.getElementById('studentFormBirthDate').value = '';
+            document.getElementById('studentFormStatus').value = 'LULUS';
+            document.getElementById('studentFormSKL').value = '';
+            document.getElementById('studentFormPhoto').value = '';
+            
+            currentStudentId = null;
+            document.getElementById('studentFormModal').classList.remove('hidden');
+        }
+
+        function editStudent(id) {
+            const student = students.find(s => s.id === id);
+            if (student) {
+                document.getElementById('studentFormTitle').textContent = 'Edit Siswa';
+                document.getElementById('studentFormName').value = student.name;
+                document.getElementById('studentFormNISN').value = student.nisn;
+                document.getElementById('studentFormBirthPlace').value = student.birthPlace;
+                document.getElementById('studentFormBirthDate').value = student.birthDate.split('T')[0];
+                document.getElementById('studentFormStatus').value = student.status;
+                document.getElementById('studentFormSKL').value = student.sklLink;
+                document.getElementById('studentFormPhoto').value = student.photo;
+                
+                currentStudentId = id;
+                document.getElementById('studentFormModal').classList.remove('hidden');
+            }
+        }
+
+        function hideStudentForm() {
+            document.getElementById('studentFormModal').classList.add('hidden');
+        }
+
+        function saveStudent() {
+            const name = document.getElementById('studentFormName').value;
+            const nisn = document.getElementById('studentFormNISN').value;
+            const birthPlace = document.getElementById('studentFormBirthPlace').value;
+            const birthDate = document.getElementById('studentFormBirthDate').value;
+            const status = document.getElementById('studentFormStatus').value;
+            const sklLink = document.getElementById('studentFormSKL').value;
+            const photo = document.getElementById('studentFormPhoto').value;
+            
+            if (!name || !nisn || !birthPlace || !birthDate) {
+                alert('Mohon lengkapi data yang diperlukan!');
+                return;
+            }
+            
+            if (currentStudentId) {
+                // Update existing student
+                const index = students.findIndex(s => s.id === currentStudentId);
+                if (index !== -1) {
+                    students[index] = {
+                        ...students[index],
+                        name,
+                        nisn,
+                        birthPlace,
+                        birthDate,
+                        status,
+                        sklLink,
+                        photo
+                    };
+                }
+            } else {
+                // Add new student
+                const newId = students.length > 0 ? Math.max(...students.map(s => s.id)) + 1 : 1;
+                students.push({
+                    id: newId,
+                    name,
+                    nisn,
+                    birthPlace,
+                    birthDate,
+                    status,
+                    sklLink,
+                    photo
+                });
+            }
+            
+            // Save to localStorage
+            saveStudentsData();
+            
+            hideStudentForm();
+            loadStudentsTable();
+        }
+
+        function deleteStudent(id) {
+            studentToDeleteId = id;
+            document.getElementById('deleteConfirmModal').classList.remove('hidden');
+        }
+
+        function hideDeleteConfirm() {
+            document.getElementById('deleteConfirmModal').classList.add('hidden');
+        }
+
+        function confirmDelete() {
+            if (studentToDeleteId) {
+                students = students.filter(s => s.id !== studentToDeleteId);
+                
+                // Save to localStorage
+                saveStudentsData();
+                
+                hideDeleteConfirm();
+                loadStudentsTable();
+            }
+        }
+
+        function saveWelcomeMessage() {
+            welcomeMessage = document.getElementById('welcomeMessageInput').value;
+            document.getElementById('welcomeMessage').innerHTML = welcomeMessage;
+            
+            // Save to localStorage
+            saveWelcomeMessageData();
+            
+            alert('Sambutan berhasil disimpan!');
+        }
+
+        function saveLogo() {
+            const newLogoUrl = document.getElementById('logoUrlInput').value;
+            if (newLogoUrl) {
+                logoUrl = newLogoUrl;
+                updateLogoDisplay();
+                
+                // Save to localStorage
+                saveLogoUrlData();
+                
+                alert('Logo berhasil disimpan!');
+            } else {
+                alert('URL logo tidak boleh kosong!');
+            }
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            initDateDropdowns();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'948d222611a24c03',t:'MTc0ODc2NDM2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>
+    function saveStudentsData() {
+        fetch("https://script.google.com/macros/s/AKfycbz3f3PsKlhuP-qzKRt4ye_PpzCjjZuylv_zrXuwmdcfe0P7ecaVwnAmOZfyCxv7rcc2iw/exec", {
+            method: "POST",
+            body: JSON.stringify({
+                type: "siswa",
+                data: students
+            })
+        }).then(res => res.text()).then(console.log);
+    }
+
+    function saveWelcomeMessageData() {
+        fetch("https://script.google.com/macros/s/AKfycbz99cUsIcksEBx8WOWXHTcFqJmLh6vj4qrkqm288BgnQj4r8X22GwevYFM_SH6Ky567wA/exec", {
+            method: "POST",
+            body: JSON.stringify({
+                type: "pengaturan",
+                data: {
+                    sambutan: welcomeMessage,
+                    logo: logoUrl
+                }
+            })
+        }).then(res => res.text()).then(console.log);
+    }
+
+    function saveLogoUrlData() {
+        saveWelcomeMessageData();  // karena logo dan sambutan disimpan bersamaan
+    }
+</script>
+
+</body>
+</html>
