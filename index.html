@@ -814,7 +814,7 @@
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'948d222611a24c03',t:'MTc0ODc2NDM2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 <script>
     function saveStudentsData() {
-        fetch("https://script.google.com/macros/s/AKfycbz3f3PsKlhuP-qzKRt4ye_PpzCjjZuylv_zrXuwmdcfe0P7ecaVwnAmOZfyCxv7rcc2iw/exec", {
+        fetch("https://script.google.com/macros/s/AKfycbwes_tFkLoAXbpjJKf3Ggm3bvxY2qszTO7WVr-18jvYNa0pEDpaR9S5GdSZp_CAyahzGA/exec", {
             method: "POST",
             body: JSON.stringify({
                 type: "siswa",
@@ -839,6 +839,37 @@
     function saveLogoUrlData() {
         saveWelcomeMessageData();  // karena logo dan sambutan disimpan bersamaan
     }
+</script>
+
+
+<script>
+const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbz99cUsIcksEBx8WOWXHTcFqJmLh6vj4qrkqm288BgnQj4r8X22GwevYFM_SH6Ky567wA/exec";
+
+// Fungsi untuk memuat data dari Google Sheets
+async function loadFromGoogleSheets() {
+    try {
+        const siswaRes = await fetch(SHEET_API_URL + "?type=siswa");
+        const siswaData = await siswaRes.json();
+        students = siswaData || [];
+        loadStudentsTable();
+
+        const pengaturanRes = await fetch(SHEET_API_URL + "?type=pengaturan");
+        const pengaturanData = await pengaturanRes.json();
+        welcomeMessage = pengaturanData.sambutan || defaultWelcomeMessage;
+        logoUrl = pengaturanData.logo || defaultLogoUrl;
+
+        document.getElementById('welcomeMessage').innerHTML = welcomeMessage;
+        updateLogoDisplay();
+    } catch (error) {
+        console.error("Gagal memuat data dari Google Sheets:", error);
+    }
+}
+
+// Panggil fungsi ini saat halaman dimuat
+document.addEventListener('DOMContentLoaded', function() {
+    initDateDropdowns();
+    loadFromGoogleSheets();
+});
 </script>
 
 </body>
